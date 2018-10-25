@@ -1,0 +1,26 @@
+{
+    "name": "fslex",
+    "displayName": "fslex",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "praffn",
+    "engines": {
+        "vscode": "^1.28.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fslex",
+            "aliases": ["FsLex", "fslex"],
+            "extensions": [".fsl"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fslex",
+            "scopeName": "source.fslex",
+            "path": "./syntaxes/fslex.tmLanguage.json"
+        }]
+    }
+}

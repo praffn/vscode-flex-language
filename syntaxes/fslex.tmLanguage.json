@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "FsLex",
+  "patterns": [
+    {
+      "comment": "generic operators",
+      "match": "(=|\\^)",
+      "name": "keyword.other"
+    },
+
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#fsharp"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "comment": "regex keywords/operators",
+      "match": "(\\||#|\\*|\\?|\\+)",
+      "name": "keyword.other"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.pegjs"
+        },
+        {
+          "match": "//.*$\\n?",
+          "name": "comment.line.double-slash.pegjs"
+        }
+      ]
+    },
+    "fsharp": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            { "include": "source.fsharp" }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [{
+        "name": "keyword.control.fslex",
+        "match": "\\b(let|rule|and|parse|eof)\\b"
+      }]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.fslex",
+          "patterns": [
+            {
+              "name": "constant.character.escape.fslex",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.fslex",
+          "patterns": [
+            {
+              "name": "constant.character.escape.fslex",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "source.fslex",
+  "fileTypes": [ "fsl" ]
+}
